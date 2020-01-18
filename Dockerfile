@@ -6,7 +6,7 @@ WORKDIR /app
 COPY --from=clone /app/spring-petclinic /app
 RUN mvn install
 FROM openjdk:8-jre-alpine
-#WORKDIR /app
-#COPY --from=build /app/target/spring-petclinic-*.jar /app
-#CMD ["java -jar spring-petclinic-*.jar"]
+WORKDIR /app
+COPY --from=build /app/target/spring-petclinic-*.jar /app
+CMD ["java -jar spring-petclinic-*.jar"]
 EXPOSE 8000
